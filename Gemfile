@@ -3,6 +3,7 @@ ruby '2.0.0'
 
 gem 'rake'
 gem 'guard'
-gem 'rspec'
+gem 'minitest'
+gem 'guard-minitest'
 gem 'turn'
 gem 'pry'
