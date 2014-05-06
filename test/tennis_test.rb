@@ -1,33 +1,42 @@
 require_relative 'minitest_helper'
+require_relative '../lib/game'
 
-def score_for events, player
-  [events.select {|i| i == player }.count*15, 40].min
-end
+# Annoying helper for minitest :/
+alias :context :describe
 
-def scores events
-  [ score_for(events, 1), score_for(events, 2) ]
-end
+describe Game do
 
-describe "Game" do
+  def subject
+    Game.new
+  end
 
-  describe "when no points scored" do
+  context "when no points scored" do
     it "returns scores for both players" do
-      scores([]).must_equal [0,0]
+      subject.scores([]).must_equal [0,0]
     end
   end
-  describe "when one point scored" do
+
+  context "when one point scored" do
     it "returns scores for both players" do
-      scores([1]).must_equal [15,0]
+      subject.scores([1]).must_equal [15,0]
     end
   end
-  
-  describe "when several points are scored" do
+
+  context "when player 1 has scored twice and player 2 has scored once" do
     it 'returns score for both players' do
-      scores([1,1,2]).must_equal [30,15]
+      subject.scores([1,1,2]).must_equal [30,15]
     end
+  end
 
+  context "when player 1 has scored three times and player 2 has scored once" do
     it 'returns score for both players 2' do
-      scores([1,1,2,1]).must_equal [40,15]
+      subject.scores([1,1,2,1]).must_equal [40,15]
+    end
+  end
+
+  context 'when player 1 has scored four times and player 2 has scored twice' do
+    it 'says player 1 has won' do
+      subject.scores([1,2,1,2,1,1]).must_equal ['won','lost']
     end
   end
 
