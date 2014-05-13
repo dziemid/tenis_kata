@@ -14,10 +14,7 @@ class Game
 
   def score_for events, player
     score = events.select {|i| i == player }.count*15
-    if score == 45
-      return 40
-    end
-    return score   
+    score == 45 ? 40 : score
   end
 
 end
