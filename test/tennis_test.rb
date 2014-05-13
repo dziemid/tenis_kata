@@ -40,4 +40,12 @@ describe Game do
     end
   end
 
+  context 'when player 2 has scored four times and player 1 has scored twice' do
+    it 'says player 2 has won' do
+      subject.scores([1,2,1,2,2,2]).must_equal ['lost','won']
+    end
+  end
+
+  
+
 end

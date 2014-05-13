@@ -17,9 +17,10 @@ class Game
 
   def display_score(player1score, player2score)
     scores = [player1score, player2score]
-    if winner_index = winner_index(scores)
-      scores[winner_index] = "won"
-      scores[winner_index-1] = "lost"
+    if i = winner_index(scores)
+      the_other_guy = i-1
+      scores[i] = "won"
+      scores[the_other_guy] = "lost"
     end
     scores
   end
