@@ -46,6 +46,10 @@ describe Game do
     end
   end
 
-  
+  context 'deuce' do
+    it 'returns deuce' do
+      subject.scores([1,2,1,2,1,2]).must_equal ['deuce','deuce']
+    end
+  end
 
 end

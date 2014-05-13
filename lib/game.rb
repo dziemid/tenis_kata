@@ -22,7 +22,7 @@ class Game
       scores[i] = "won"
       scores[the_other_guy] = "lost"
     end
-    scores
+    scores == [40, 40] ? ["deuce", "deuce"] : scores
   end
 
   def score_for events, player
